@@ -196,8 +196,19 @@
 							  			$('#dataList').datagrid("reload");
 										
 									} else{
-										$.messager.alert("消息提醒","添加失败!","warning");
-										return;
+                                        $.messager.alert("消息提醒","添加成功!","info");
+                                        //关闭窗口
+                                        $("#addDialog").dialog("close");
+                                        //清空原表格数据
+                                        $("#add_number").textbox('setValue', "");
+                                        $("#add_name").textbox('setValue', "");
+                                        $("#add_sex").textbox('setValue', "男");
+                                        $("#add_mobile").textbox('setValue', "");
+                                        $("#add_qq").textbox('setValue', "");
+                                        $(table).find(".chooseTr").remove();
+
+                                        //重新刷新页面数据
+                                        $('#dataList').datagrid("reload");
 									}
 								}
 							});
@@ -338,7 +349,7 @@
 			],
 			onBeforeOpen: function(){
 				var selectRow = $("#dataList").datagrid("getSelected");
-				//设置值
+				//设置参数值
 				$("#edit_name").textbox('setValue', selectRow.name);
 				$("#edit_sex").textbox('setValue', selectRow.sex);
 				$("#edit_mobile").textbox('setValue', selectRow.mobile);

@@ -4,6 +4,7 @@ public class Clazz {
       private int id;
       private String bname;
       private String info;
+      private String id1;
 	public int getId() {
 		return id;
 	}

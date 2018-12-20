@@ -13,9 +13,9 @@ public class SnGenerateUtil {
        
        public static String generateTeaSn(int clazzId)
        {
-    	   String sn="";
-    	   sn="T"+clazzId+System.currentTimeMillis();
-    	   return sn;
+    	   String sn1="";
+    	   sn1="T"+clazzId+System.currentTimeMillis();
+    	   return sn1;
     	   
        }
 }

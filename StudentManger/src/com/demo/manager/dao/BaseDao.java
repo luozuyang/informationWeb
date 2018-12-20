@@ -35,7 +35,6 @@ public class BaseDao {
 			PreparedStatement prepareStatement = dbutil.getConnection().prepareStatement(sql);
 			return prepareStatement.executeUpdate()>0;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	return false;

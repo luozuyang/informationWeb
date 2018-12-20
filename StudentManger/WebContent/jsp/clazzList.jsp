@@ -15,7 +15,7 @@
 		//datagrid初始化 
 	    $('#dataList').datagrid({ 
 	        title:'班级列表', 
-	        iconCls:'icon-more',//图标 
+	        iconCls:'icon-more',//图标1
 	        border: true, 
 	        collapsible: false,//是否可折叠的 
 	        fit: true,//自动大小 

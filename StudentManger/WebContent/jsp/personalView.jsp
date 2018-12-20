@@ -27,7 +27,7 @@
 	<script type="text/javascript">
 	$(function() {	
 		
-		//修改密码窗口
+		//修改密码
 	    $("#passwordDialog").dialog({
 	    	title: "修改密码",
 	    	width: 500,

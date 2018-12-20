@@ -18,7 +18,7 @@ public class AdminDao extends BaseDao {
 			    admin.setName(result.getString("name"));
 			    admin.setPassword(result.getString("password"));
 			    admin.setStatus(result.getInt("status"));
-			    return admin;
+			    return admin; 
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

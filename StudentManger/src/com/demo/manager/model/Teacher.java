@@ -12,6 +12,7 @@ public class Teacher {
     private String mobile;
     private String qq;
     private InputStream photo;
+    private String id1;
 	public int getId() {
 		return id;
 	}

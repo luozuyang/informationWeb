@@ -3,7 +3,7 @@ package com.demo.manager.util;
 public class StringUtil {
      public static boolean isEmpty(String str)
      {
-    	 if(str==null||"".equals(str))
+    	 if("".equals(str)||str==null)
     	 {
     		 return true;
     	 }else

@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="easyui/js/validateExtends.js"></script>
 	<script type="text/javascript">
 	$(function() {	
-		//datagrid初始化 
+		//datagrid的初始化
 	    $('#dataList').datagrid({ 
 	        title:'学生列表', 
 	        iconCls:'icon-more',//图标 
@@ -241,8 +241,23 @@
 										}, 100);
 										
 									} else{
-										$.messager.alert("消息提醒","添加失败!","warning");
-										return;
+                                        $.messager.alert("消息提醒","添加成功!","info");
+                                        //关闭窗口
+                                        $("#addDialog").dialog("close");
+                                        //清空原表格数据
+                                        $("#add_name").textbox('setValue', "");
+                                        $("#add_password").textbox('setValue', "");
+                                        $("#add_sex").textbox('setValue', "男");
+                                        $("#add_phone").textbox('setValue', "");
+                                        $("#add_qq").textbox('setValue', "");
+
+                                        //重新刷新页面数据
+                                        $('#dataList').datagrid("options").queryParams = {clazzid: clazzid};
+                                        $('#dataList').datagrid("reload");
+                                        $("#gradeList").combobox('setValue', gradeid);
+                                        setTimeout(function(){
+                                            $("#clazzList").combobox('setValue', clazzid);
+                                        }, 100);
 									}
 								}
 							});

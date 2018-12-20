@@ -26,61 +26,61 @@ import com.lizhou.fileload.FileUpload;
 
 public class PhotoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   String method = request.getParameter("method");
-		   if("getPhoto".equals(method))
-		   {
-			   getPhoto(request,response);
-		   }else if("SetPhoto".equals(method))
-		   {
-			   uploadPhoto(request,response);
-		   }
+		String method = request.getParameter("method");
+		if("getPhoto".equals(method))
+		{
+			getPhoto(request,response);
+		}else if("SetPhoto".equals(method))
+		{
+			uploadPhoto(request,response);
+		}
 	}
 
 
 	private void uploadPhoto(HttpServletRequest request, HttpServletResponse response) {
-		  int sid= request.getParameter("sid") == null ? 0 :Integer.parseInt(request.getParameter("sid"));
-		  int tid= request.getParameter("tid") == null ? 0 :Integer.parseInt(request.getParameter("tid"));
-		  FileUpload fileUpload = new FileUpload(request);
-		  fileUpload.setFileFormat("jpg");
-		  fileUpload.setFileFormat("png");
-		  fileUpload.setFileFormat("jpeg");
-		  fileUpload.setFileSize(2048);
-		  response.setCharacterEncoding("utf-8");
-		  try {
+		int sid= request.getParameter("sid") == null ? 0 :Integer.parseInt(request.getParameter("sid"));
+		int tid= request.getParameter("tid") == null ? 0 :Integer.parseInt(request.getParameter("tid"));
+		FileUpload fileUpload = new FileUpload(request);
+		fileUpload.setFileFormat("jpg");
+		fileUpload.setFileFormat("png");
+		fileUpload.setFileFormat("jpeg");
+		fileUpload.setFileSize(2048);
+		response.setCharacterEncoding("utf-8");
+		try {
 			InputStream uploadInputStream = fileUpload.getUploadInputStream();
 			if(sid != 0) {
-			   Student stu = new Student();
-			   stu.setId(sid);
-			   stu.setPhoto(uploadInputStream);
-			   StudentDao studao = new StudentDao();
-			   if(studao.setStudentPhoto(stu)) {
-				   response.getWriter().write("<div id='message'>ÉÏ´«³É¹¦</div>");
-			   }else {
-				   response.getWriter().write("<div id='message'>ÉÏ´«Ê§°Ü</div>");
-			   }
+				Student stu = new Student();
+				stu.setId(sid);
+				stu.setPhoto(uploadInputStream);
+				StudentDao studao = new StudentDao();
+				if(studao.setStudentPhoto(stu)) {
+					response.getWriter().write("<div id='message'>ä¸Šä¼ æˆåŠŸ</div>");
+				}else {
+					response.getWriter().write("<div id='message'>ä¸Šä¼ å¤±è´¥</div>");
+				}
 			}
 			if(tid != 0) {
-				   Teacher tea = new Teacher();
-				   tea.setId(tid);
-				   tea.setPhoto(uploadInputStream);
-				   TeacherDao teadao = new TeacherDao();
-				   if(teadao.setTeacherPhoto(tea)) {
-					   response.getWriter().write("<div id='message'>ÉÏ´«³É¹¦</div>");
-				   }else {
-					   response.getWriter().write("<div id='message'>ÉÏ´«Ê§°Ü</div>");
-				   }
+				Teacher tea = new Teacher();
+				tea.setId(tid);
+				tea.setPhoto(uploadInputStream);
+				TeacherDao teadao = new TeacherDao();
+				if(teadao.setTeacherPhoto(tea)) {
+					response.getWriter().write("<div id='message'>ä¸Šä¼ æˆåŠŸ</div>");
+				}else {
+					response.getWriter().write("<div id='message'>ä¸Šä¼ å¤±è´¥</div>");
 				}
+			}
 		} catch (ProtocolException  e) {
 			// TODO Auto-generated catch block
 			try {
-				response.getWriter().write("<div id='message'>ÉÏ´«Ğ­Òé ´íÎó</div>");
+				response.getWriter().write("<div id='message'>ä¸Šä¼ åè®® é”™è¯¯</div>");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -88,7 +88,7 @@ public class PhotoServlet extends HttpServlet {
 			e.printStackTrace();
 		}catch(NullFileException e1) {
 			try {
-				response.getWriter().write("<div id='message'>ÉÏ´«µÄÎÄ¼şÎª¿Õ!</div>");
+				response.getWriter().write("<div id='message'>ä¸Šä¼ çš„æ–‡ä»¶ä¸ºç©º!</div>");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -96,7 +96,7 @@ public class PhotoServlet extends HttpServlet {
 			e1.printStackTrace();
 		}catch(SizeException e2) {
 			try {
-				response.getWriter().write("<div id='message'>ÉÏ´«ÎÄ¼ş´óĞ¡²»ÄÜ³¬¹ı"+fileUpload.getFileSize()+"£¡</div>");
+				response.getWriter().write("<div id='message'>ä¸Šä¼ æ–‡ä»¶å¤§å°ä¸èƒ½è¶…è¿‡"+fileUpload.getFileSize()+"ï¼</div>");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -104,7 +104,7 @@ public class PhotoServlet extends HttpServlet {
 			e2.printStackTrace();
 		}catch(FileFormatException e3) {
 			try {
-				response.getWriter().write("<div id='message'>ÉÏ´«ÎÄ¼ş¸ñÊ½²»ÕıÈ·£¬ÇëÉÏ´« "+fileUpload.getFileFormat()+" ¸ñÊ½µÄÎÄ¼ş£¡</div>");
+				response.getWriter().write("<div id='message'>ä¸Šä¼ æ–‡ä»¶æ ¼å¼ä¸æ­£ç¡®ï¼Œè¯·ä¸Šä¼  "+fileUpload.getFileFormat()+" æ ¼å¼çš„æ–‡ä»¶ï¼</div>");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -112,7 +112,7 @@ public class PhotoServlet extends HttpServlet {
 			e3.printStackTrace();
 		}catch(IOException e4) {
 			try {
-				response.getWriter().write("<div id='message'>¶ÁÈ¡ÎÄ¼ş³ö´í£¡</div>");
+				response.getWriter().write("<div id='message'>è¯»å–æ–‡ä»¶å‡ºé”™ï¼</div>");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -120,7 +120,7 @@ public class PhotoServlet extends HttpServlet {
 			e4.printStackTrace();
 		}catch(FileUploadException e5) {
 			try {
-				response.getWriter().write("<div id='message'>ÉÏ´«ÎÄ¼şÊ§°Ü£¡</div>");
+				response.getWriter().write("<div id='message'>ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼</div>");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -134,7 +134,7 @@ public class PhotoServlet extends HttpServlet {
 		int sid = request.getParameter("sid") == null ? 0 : Integer.parseInt(request.getParameter("sid"));
 		int tid = request.getParameter("tid") == null ? 0 : Integer.parseInt(request.getParameter("tid"));
 		if(sid != 0){
-			//Ñ§Éú
+			//å­¦ç”Ÿ
 			StudentDao studentDao = new StudentDao();
 			Student student = studentDao.getStudent(sid);
 			studentDao.closeconn();
@@ -152,30 +152,30 @@ public class PhotoServlet extends HttpServlet {
 					return;
 				}
 			}
-		}	
-			if(tid != 0){
-				//
-				TeacherDao teacherDao = new TeacherDao();
-				Teacher teacher = teacherDao.getTeacher(tid); 
-				teacherDao.closeconn();
-				if(teacher != null){
-					InputStream photo = teacher.getPhoto();
-					if(photo != null){
-						try {
-							byte[] b = new byte[photo.available()];
-							photo.read(b);
-							response.getOutputStream().write(b,0,b.length);
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						return;
+		}
+		if(tid != 0){
+			//
+			TeacherDao teacherDao = new TeacherDao();
+			Teacher teacher = teacherDao.getTeacher(tid);
+			teacherDao.closeconn();
+			if(teacher != null){
+				InputStream photo = teacher.getPhoto();
+				if(photo != null){
+					try {
+						byte[] b = new byte[photo.available()];
+						photo.read(b);
+						response.getOutputStream().write(b,0,b.length);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
+					return;
 				}
-		    }
-		   String path = request.getSession().getServletContext().getRealPath("");
-		   File file = new File(path+"\\file\\logo.jpg");
-		   try {
+			}
+		}
+		String path = request.getSession().getServletContext().getRealPath("");
+		File file = new File(path+"\\file\\logo.jpg");
+		try {
 			FileInputStream  input = new FileInputStream(file);
 			byte[] b = new byte[input.available()];
 			input.read(b);
@@ -185,4 +185,4 @@ public class PhotoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-  }
+}

@@ -22,6 +22,14 @@ public class TeacherDao extends BaseDao {
 		sql+=",'"+tea.getQq()+"',null)";
  	   return update(sql);
 	}
+
+	public boolean addTeacherClass(Teacher tea) {
+		// TODO Auto-generated method stub
+		String sql = "insert into teacherclass values(null,'";
+		sql += tea.getClazzId() + "')";
+		return update(sql);
+	}
+
 	public boolean editTeacher(Teacher tea) {
 		// TODO Auto-generated method stub
 		String sql = "update teacher set name = '"+tea.getName()+"'";
@@ -88,7 +96,7 @@ public class TeacherDao extends BaseDao {
  	   if(tea.getId() != 0) {
 		   sql+=" and id = "+tea.getId();
 	   }
- 	   sql+=" limit "+page.getStart()+","+page.getPageSize();
+ 	   sql+=" limit " + page.getStart() + "," + page.getPageSize();
  	   ResultSet resultSet = query(sql.replaceFirst("and", "where"));
  	   try {
 			while(resultSet.next())

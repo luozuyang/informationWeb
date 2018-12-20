@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
 	$(function(){
-		//点击图片切换验证码
+		//点击图片来切换验证码
 		$("#vcodeImg").click(function(){
 			this.src="VerificationServlet?method=loginverification&t="+new Date().getTime();
 		});
@@ -118,7 +118,7 @@
     </form>
   </div>
 </div>
-<div class="footer">Copyright &nbsp; author @ wangsen </div>
+<div class="footer">罗祖洋 &nbsp; 数据库课设 </div>
 
 
 </body>

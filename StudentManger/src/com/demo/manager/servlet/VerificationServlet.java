@@ -29,6 +29,7 @@ public class VerificationServlet extends HttpServlet {
 	}
 	private void generateLoginCpacha(HttpServletRequest request,HttpServletResponse reponse) throws IOException{
 		Verification veriUtil = new Verification();
+		System.out.println("");
 		String generatorVCode = veriUtil.generatorVCode();
 		request.getSession().setAttribute("loginverification", generatorVCode);
 		BufferedImage generatorRotateVCodeImage = veriUtil.generatorRotateVCodeImage(generatorVCode, true);

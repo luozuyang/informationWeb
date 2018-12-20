@@ -97,6 +97,7 @@ public class ClazzServlet extends HttpServlet {
 	    {
 	    	try {
 				response.getWriter().write("success");
+				System.out.println("success");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

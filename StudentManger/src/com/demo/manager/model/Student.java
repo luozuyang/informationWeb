@@ -3,15 +3,15 @@ package com.demo.manager.model;
 import java.io.InputStream;
 
 public class Student {
-    private int id;
-    private String sn;//—ß∫≈ 
+	private int id;
+	private String sn;//Â≠¶Âè∑
 	private String name;
 	private String password;
-    private int clazzId;
-    private String sex="ƒ–";
-    private String mobile;
-    private String qq;
-    private InputStream photo;
+	private int clazzId;
+	private String sex="Áî∑";
+	private String mobile;
+	private String qq;
+	private InputStream photo;
 	public int getId() {
 		return id;
 	}
@@ -25,12 +25,12 @@ public class Student {
 		this.sn = sn;
 	}
 	public String getName() {
-			return name;
-		}
+		return name;
+	}
 	public void setName(String name) {
-			this.name = name;
-		}
-	
+		this.name = name;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -67,6 +67,6 @@ public class Student {
 	public void setPhoto(InputStream photo) {
 		this.photo = photo;
 	}
-    
-    
+
+
 }

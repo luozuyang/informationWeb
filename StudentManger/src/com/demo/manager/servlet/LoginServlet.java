@@ -18,15 +18,15 @@ import com.demo.manager.util.StringUtil;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
 
-	
+
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request,response);
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String method = request.getParameter("method");
 		if("LoginOut".equals(method))
@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		int type=Integer.parseInt(request.getParameter("type"));
 		String loginverifi = (String) request.getSession().getAttribute("loginverification");
-		if(StringUtil.isEmpty(vcode)) 
+		if(StringUtil.isEmpty(vcode))
 		{
 			response.getWriter().write("vcodeError");
 			return;
@@ -49,12 +49,12 @@ public class LoginServlet extends HttpServlet {
 			response.getWriter().write("vcodeError");
 			return;
 		}
-		//—È÷§”√ªß…Ì∑›∫Õ√‹¬Î
+		//È™åËØÅÁî®Êà∑Ë∫´‰ªΩÂíåÂØÜÁ†Å
 		String loginStatus="loginFaild";
 		switch(type)
 		{
-		   case 1:
-		   {
+			case 1:
+			{
 				AdminDao admindao=new AdminDao();
 				Admin admin=admindao.login(name, password);
 				admindao.closeconn();
@@ -67,10 +67,10 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("user", admin);
 				session.setAttribute("userType", type);
 				loginStatus="loginSuccess";
-			    break;
-		   } 
-		   case 2:
-		   {
+				break;
+			}
+			case 2:
+			{
 				StudentDao studao=new StudentDao();
 				Student stu=studao.login(name, password);
 				studao.closeconn();
@@ -83,10 +83,10 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("user", stu);
 				session.setAttribute("userType", type);
 				loginStatus="loginSuccess";
-			    break;
-		   } 
-		   case 3:
-		   {
+				break;
+			}
+			case 3:
+			{
 				TeacherDao teadao=new TeacherDao();
 				Teacher tea=teadao.login(name, password);
 				teadao.closeconn();
@@ -99,17 +99,17 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("user", tea);
 				session.setAttribute("userType", type);
 				loginStatus="loginSuccess";
-			    break;
-		   } 
+				break;
+			}
 
-		   
-		   default:
-			   break;
+
+			default:
+				break;
 		}
-	
+
 		response.getWriter().write(loginStatus);
 	}
-	
+
 	private void loginOut(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
 		request.getSession().removeAttribute("user");

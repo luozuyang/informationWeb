@@ -6,39 +6,39 @@ import java.sql.SQLException;
 
 
 public class DbUtil {
-      private String dbUrl="jdbc:mysql://localhost:3306/schoolmanger?useUnicode=true&characterEncoding=utf8";
-      private String dbUser="root";
-      private String dbPassword="";
-      private String jdbcName="com.mysql.jdbc.Driver";
-      private Connection conn=null;
-      public Connection getConnection()
-      { 
-    	  try
-    	  {
-    		  Class.forName(jdbcName);
-        	  conn=DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-        	  System.out.println("Êı¾İ¿âÁ¬½Ó³É¹¦");
-        	  
-		  } 
-    	  catch (Exception e) 
-    	  {
+	private String dbUrl="jdbc:mysql://localhost:3306/schoolmanger?useUnicode=true&characterEncoding=utf8";
+	private String dbUser="root";
+	private String dbPassword="";
+	private String jdbcName="com.mysql.jdbc.Driver";
+	private Connection conn=null;
+	public Connection getConnection()
+	{
+		try
+		{
+			Class.forName(jdbcName);
+			conn=DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+			System.out.println("æ•°æ®åº“è¿æ¥æˆåŠŸ");
+
+		}
+		catch (Exception e)
+		{
 			// TODO Auto-generated catch block
-    		  System.out.println("Êı¾İ¿âÁ¬½ÓÊ§°Ü");
+			System.out.println("æ•°æ®åº“è¿æ¥å¤±è´¥");
 			e.printStackTrace();
-		  }
-    	  return conn;
-      }
-      
-      public void closeConn()
-      {
-    	  if(conn!=null)
+		}
+		return conn;
+	}
+
+	public void closeConn()
+	{
+		if(conn!=null)
 			try {
 				conn.close();
-				System.out.println("Êı¾İ¿âÁ´½ÓÒÑ¹Ø±Õ£¡");
+				System.out.println("æ•°æ®åº“é“¾æ¥å·²å…³é—­ï¼");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-      }
-  
+	}
+
 }

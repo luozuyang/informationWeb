@@ -7,7 +7,7 @@ import java.util.Date;
 public class DateFormatUtil {
       public static String getFormatDate(Date date,String format)
       {
-    	  SimpleDateFormat sdf=new SimpleDateFormat();
-    	  return sdf.format(date);
+    	  SimpleDateFormat sda1=new SimpleDateFormat();
+    	  return sda1.format(date);
       }
 }

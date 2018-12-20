@@ -1,11 +1,11 @@
 package com.demo.manager.model;
 
 public class Page {
-    private int start;
-    private int currentPage;//µ±Ç°Ò³
-    private int pageSize;//Ã¿Ò³ÏÔÊ¾ÊıÁ¿
+	private int start;
+	private int currentPage;//å½“å‰é¡µ
+	private int pageSize;//æ¯é¡µæ˜¾ç¤ºæ•°é‡
 	public Page(int currentPage, int pageSize) {
-		
+
 		this.start = (currentPage-1)*pageSize;
 		this.currentPage = currentPage;
 		this.pageSize = pageSize;
@@ -28,5 +28,5 @@ public class Page {
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
-    
+
 }
